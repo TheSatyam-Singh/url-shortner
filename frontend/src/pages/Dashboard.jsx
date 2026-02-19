@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
 const API = '/api'
 
@@ -14,9 +14,11 @@ function Dashboard({ token, username, onLogout }) {
     Authorization: `Bearer ${token}`,
   }
 
-  const fetchUrls = async () => {
+  const fetchUrls = useCallback(async () => {
     try {
-      const res = await fetch(`${API}/urls`, { headers })
+      const res = await fetch(`${API}/urls`, {
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+      })
       if (res.ok) {
         const data = await res.json()
         setUrls(data)
@@ -24,11 +26,11 @@ function Dashboard({ token, username, onLogout }) {
     } catch {
       // ignore
     }
-  }
+  }, [token])
 
   useEffect(() => {
     fetchUrls()
-  }, [])
+  }, [fetchUrls])
 
   const handleShorten = async (e) => {
     e.preventDefault()
