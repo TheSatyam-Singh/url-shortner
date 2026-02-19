@@ -17,6 +17,7 @@ Create a `.env` file (optional):
 MONGO_URI=mongodb://localhost:27017/urlshortner
 SECRET_KEY=your-secret-key
 BASE_URL=http://localhost:5000
+FLASK_DEBUG=true
 ```
 
 ## Run
