@@ -1,0 +1,8 @@
+flask==3.1.0
+flask-cors==5.0.1
+flask-pymongo==2.3.0
+pymongo==4.11.3
+bcrypt==4.3.0
+PyJWT==2.10.1
+qrcode[pil]==8.0
+python-dotenv==1.1.0
